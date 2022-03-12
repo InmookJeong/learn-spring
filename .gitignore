@@ -1,0 +1,6 @@
+# ignore all .class files
+*.class
+
+**/server/
+**/workspace/.metadata/
+**workspace/Servers
