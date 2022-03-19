@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 
+		Spring Bean Configuration File 생성
+		이 XML 파일을 Spring Config(스프링 설정) 파일이라고 함
+	-->
+	
+	<!-- Calculator 객체 생성 -->
+	<bean id="calculator" class="kr.study.dev_mook.model.Calculator" />
+	
+	<!-- MyCalculator 객체 생성 -->
+	<bean id="myCalculator" class="kr.study.dev_mook.model.MyCalculator">
+		<!-- 필드 설정; setter가 있어야 사용 가능 -->
+		<property name="calculator">
+			<!-- 생성자를 통한 의존성 주입 -->
+			<ref bean="calculator"/>
+		</property>
+		<property name="firstNumber" value="10">
+			<!-- 값을 통한 의존성 주입 -->
+		</property>
+		<property name="secondNumber" value="2" />
+	</bean>
+
+</beans>
