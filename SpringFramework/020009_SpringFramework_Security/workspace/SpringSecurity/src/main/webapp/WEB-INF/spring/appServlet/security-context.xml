@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<security:http auto-config="true">
+		<!-- 내가 만든 로그인 페이지로 이동, 안할 경우 Spring이 제공하는 로그인페이지로 이동됨 -->
+		<security:form-login login-page="/loginForm.html"/>
+		<!-- 해당 URL에 대해 어떤 사용자가 접근하도록 할 것인지 설정 -->
+		<security:intercept-url pattern="/login.html*" access="ROLE_USER"/>
+		<security:intercept-url pattern="/welcome.html*" access="ROLE_ADMIN"/>
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<!-- 이름이 user이고 password가 123인 사용자는 ROLE_USER에 접근 가능 -->
+				<security:user name="user" password="123" authorities="ROLE_USER"/>
+				<!-- 이름이 admin이고 password가 123인 사용자는 ROLE_USER과 ROLE_ADMIN에 접근 가능 -->
+				<security:user name="admin" password="123" authorities="ROLE_ADMIN,ROLE_USER"/>
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+</beans>
