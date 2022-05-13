@@ -28,6 +28,15 @@
             - 데이터베이스 연동을 위한 Logic Interface
         - persistence.impl
             - 데이터베이스 연동을 위한 Logic 구현
+        - model
+            - BoardVO
+                - 게시판 관리를 위한 Model
+            - Criteria
+                - 페이지 처리를 위한 Model
+            - MemberVO
+                - 회원 관리를 위한 Model
+            - ProductVO
+                - 객체 작성 연습을 위한 Model
 - src/main/resource
     - framework/spring
         - context-common.xml
