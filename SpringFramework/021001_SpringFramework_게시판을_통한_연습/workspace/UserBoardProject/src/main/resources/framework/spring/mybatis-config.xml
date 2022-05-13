@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- MyBatis 설정 파일 -->
+<!-- Config 파일 사용을 위해 sqlSessionFactory에 classpath 추가 -->
+<configuration>
+	
+	<!-- Mapper에서 parameterType이나 resultType에 사용하는 Class의 이름을 패키지를 생략하고 사용 가능 -->
+	<!-- ex) kr.study.dev_mook.model.BoardVO -> BoardVO로만 작성 가능 -->
+	<typeAliases>
+		<package name="kr.study.dev_mook.model"/>
+	</typeAliases>
+
+</configuration>

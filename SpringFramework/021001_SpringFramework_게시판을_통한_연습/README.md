@@ -1,0 +1,66 @@
+# 사용자 및 게시판 작성을 통한 Springframework 학습
+
+## 참고 서적
+- 코드로 배우는 스프링 웹 프로젝트
+    - 저자 : 구멍가게 코딩단
+    - 출판사 : 남가람북스
+    - 출간일 : 2015년 08월 16일
+        - 3쇄 : 2016년 3월 15일
+
+## 프로젝트 구조
+    - src/main/java
+        - kr.study.dev_mook
+            - controller
+                - HomeController
+                    - Default Controller
+                - SampleController
+                    - RequestMapping 연습용 Controller
+                - BoardController
+                    - 게시판 목록, 상세조회, 추가, 수정, 삭제 요청 처리
+            - service
+                - Business Logic Interface
+            - service.impl
+                - Business Logic 구현
+            - persistance
+                - 데이터베이스 연동을 위한 Logic Interface
+            - persistence.impl
+                - 데이터베이스 연동을 위한 Logic 구현
+    - src/main/resource
+        - framework/spring
+            - context-common.xml
+                - Component의 Bean 등록을 위한 component-scan property 작성
+            - context-datasource.xml
+                - Database 연동을 위한 properties 작성
+                    - Datasource, SqlSessionFactory, SqlSession
+            - mybatis-config.xml
+                - ParameterType 또는 ResultType에 사용되는 Model 관련 Alias 작성
+        - mappers
+            - boardMapper.xml
+                - 게시판 관련 SQL
+            - memberMapper.xml
+                - 사용자 관련 SQL
+        - log4j.xml, log4jdbc.log4j2.properties, logback.xml
+            - 데이터베이스 실행 로그 조회를 위한 파일
+    - src/test/java
+        - kr.study.dev_mook
+            - controller
+                - 화면 관련 Test Code 작성
+            - database
+                - Database 연동 관련 Test Code 작성
+            - persistance
+                - Database에 Data 입력 및 관리 관련 Test Code 작성
+    - src/test/resources
+        - Test Code 작성 시 사용할 Resource 저장
+    - docs
+        - Table 생성 Query
+            - MySQL 기준
+    - src/main/webapp
+        - resource
+            - 화면 구현을 위한 JS, CSS 파일
+                - Bootstrap, AdminLTE, Jquery 등 Libraryis
+        - WEB-INF
+            - spring
+                - appServlet
+                    - Servlet 관련 Properties
+            - view
+                - 게시판 관련 화면
