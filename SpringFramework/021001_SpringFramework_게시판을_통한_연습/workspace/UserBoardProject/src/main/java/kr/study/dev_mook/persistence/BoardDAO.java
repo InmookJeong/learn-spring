@@ -23,4 +23,7 @@ public interface BoardDAO {
 	/* 시작 페이지 번호와 perPageNum 번호를 가져오기 위한 처리 */
 	public List<BoardVO> listCriteria(Criteria criteria) throws Exception;
 	
+	/* 전체 게시글 갯수 가져오기 */
+	public int countPaging(Criteria cri) throws Exception;
+	
 }

@@ -1,5 +1,7 @@
 package kr.study.dev_mook.persistence;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Description;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import kr.study.dev_mook.model.BoardVO;
 import kr.study.dev_mook.model.Criteria;
@@ -79,6 +83,36 @@ public class BoardDAOTest {
 		for(BoardVO board : list) {
 			logger.info(board.getBno() + " : " + board.getTitle());
 		}
+	}
+	
+	@Test
+	@Description("페이지 조회를 위한 Parameter Query 테스트")
+	public void testURI() throws Exception {
+		UriComponents uriComponents = 
+				UriComponentsBuilder.newInstance()
+				.path("/board/read")
+				.queryParam("bno", 12)
+				.queryParam("perPageNum", 20)
+				.build();
+		
+		String expected = "/board/read?bno=12&perPageNum=20";
+		assertEquals(uriComponents.toString(), expected);
+	}
+	
+	@Test
+	@Description("페이지 조회를 위한 Parameter Query 테스트 - expand 활용")
+	public void testURI2() throws Exception {
+		UriComponents uriComponents = 
+				UriComponentsBuilder.newInstance()
+				.path("/{module}/{page}")
+				.queryParam("bno", 12)
+				.queryParam("perPageNum", 20)
+				.build()
+				.expand("board", "read")
+				.encode();
+		
+		String expected = "/board/read?bno=12&perPageNum=20";
+		assertEquals(uriComponents.toString(), expected);
 	}
 
 }
