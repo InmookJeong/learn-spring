@@ -10,6 +10,9 @@
 ## 프로젝트 구조
 - src/main/java
     - kr.study.dev_mook
+        - common
+            - CommonExceptionAdvice
+                - Contoroller에서 발생한 Exception에 대한 처리
         - controller
             - HomeController
                 - Default Controller
