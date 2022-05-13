@@ -3,6 +3,7 @@ package kr.study.dev_mook.service;
 import java.util.List;
 
 import kr.study.dev_mook.model.BoardVO;
+import kr.study.dev_mook.model.Criteria;
 
 public interface BoardService {
 	
@@ -15,5 +16,7 @@ public interface BoardService {
 	public void remove(Integer bno) throws Exception;
 	
 	public List<BoardVO> listAll() throws Exception;
+	
+	public List<BoardVO> listCriteria(Criteria criteria) throws Exception;
 
 }

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.study.dev_mook.model.BoardVO;
+import kr.study.dev_mook.model.Criteria;
 import kr.study.dev_mook.persistence.BoardDAO;
 
 @Repository
@@ -41,5 +42,17 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return session.selectList(NAMESPACE+".listAll");
+	}
+
+	@Override
+	public List<BoardVO> listPage(int page) throws Exception {
+		if(page <= 0) page = 1;
+		page = (page - 1) * 10;
+		return session.selectList(NAMESPACE+".listPage", page);
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria criteria) throws Exception {
+		return session.selectList(NAMESPACE+".listCriteria", criteria);
 	}
 }

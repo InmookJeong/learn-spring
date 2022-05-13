@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import kr.study.dev_mook.model.BoardVO;
+import kr.study.dev_mook.model.Criteria;
 import kr.study.dev_mook.persistence.BoardDAO;
 import kr.study.dev_mook.service.BoardService;
 
@@ -39,6 +40,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return dao.listAll();
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria criteria) throws Exception {
+		return dao.listCriteria(criteria);
 	}
 
 }

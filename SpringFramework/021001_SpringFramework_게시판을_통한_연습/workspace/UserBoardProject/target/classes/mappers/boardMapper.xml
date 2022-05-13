@@ -52,4 +52,35 @@
 		]]>
 	</select>
 	
+	<!-- typeAliases 적용: 패키지명 생략 -->
+	<select id="listPage" resultType="BoardVO">
+		<![CDATA[
+			SELECT
+				bno, title, content, writer, regdate, viewcnt
+			FROM
+				tbl_board
+			WHERE
+				bno > 0
+			ORDER BY
+				bno DESC, regdate DESC
+			LIMIT
+				#{page}, ${perPageNum}
+		]]>
+	</select>
+	
+	<select id="listCriteria" resultType="BoardVO">
+		<![CDATA[
+			SELECT
+				bno, title, content, writer, regdate, viewcnt
+			FROM
+				tbl_board
+			WHERE
+				bno > 0
+			ORDER BY
+				bno DESC, regdate DESC
+			LIMIT
+				#{pageStart}, ${perPageNum}
+		]]>
+	</select>
+	
 </mapper>
