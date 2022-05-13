@@ -35,6 +35,8 @@
                 - 페이지 처리를 위한 Model
             - MemberVO
                 - 회원 관리를 위한 Model
+            - PageMaker
+                - 페이지 UI 구현을 위한 Model
             - ProductVO
                 - 객체 작성 연습을 위한 Model
 - src/main/resource
@@ -49,6 +51,7 @@
     - mappers
         - boardMapper.xml
             - 게시판 관련 SQL
+            - 페이지 관련 SQL
         - memberMapper.xml
             - 사용자 관련 SQL
     - log4j.xml, log4jdbc.log4j2.properties, logback.xml
