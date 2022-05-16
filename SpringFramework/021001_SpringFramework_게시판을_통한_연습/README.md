@@ -14,12 +14,14 @@
             - CommonExceptionAdvice
                 - Contoroller에서 발생한 Exception에 대한 처리
         - controller
-            - HomeController
-                - Default Controller
-            - SampleController
-                - RequestMapping 연습용 Controller
             - BoardController
                 - 게시판 목록, 상세조회, 추가, 수정, 삭제 요청 처리
+            - HomeController
+                - Default Controller
+            - ReplyController
+                - 댓글 추가, 목록 조회, 수정, 삭제 등 요청 처리
+            - SampleController
+                - RequestMapping 연습용 Controller
             - SampleRestController
                 - REST 연습을 위한 Controller
             - SearchBoardController
@@ -43,6 +45,8 @@
                 - 페이지 UI 구현을 위한 Model
             - ProductVO
                 - 객체 작성 연습을 위한 Model
+            - ReplyVO
+                - 댓글 관리를 위한 Model
             - RestSampleVO
                 - REST 방식으로 데이터를 전달하기 위한 Sample Model
             - SearchCriteria
