@@ -20,6 +20,10 @@
                 - RequestMapping 연습용 Controller
             - BoardController
                 - 게시판 목록, 상세조회, 추가, 수정, 삭제 요청 처리
+            - SampleRestController
+                - REST 연습을 위한 Controller
+            - SearchBoardController
+                - 페이지 처리 및 검색을 최종적으로 구현하기 위한 게시판 Controller
         - service
             - Business Logic Interface
         - service.impl
@@ -39,6 +43,10 @@
                 - 페이지 UI 구현을 위한 Model
             - ProductVO
                 - 객체 작성 연습을 위한 Model
+            - RestSampleVO
+                - REST 방식으로 데이터를 전달하기 위한 Sample Model
+            - SearchCriteria
+                - 페이지 처리 및 검색 조건을 위한 Model
 - src/main/resource
     - framework/spring
         - context-common.xml
