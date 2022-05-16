@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.study.dev_mook.model.BoardVO;
 import kr.study.dev_mook.model.Criteria;
+import kr.study.dev_mook.model.SearchCriteria;
 import kr.study.dev_mook.persistence.BoardDAO;
 import kr.study.dev_mook.service.BoardService;
 
@@ -50,6 +51,18 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int listCountCriteria(Criteria cri) throws Exception {
 		return dao.countPaging(cri);
+	}
+	
+	/* 검색을 통한 게시글 목록 조회 */
+	@Override
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+		return dao.listSearch(cri);
+	}
+
+	/* 검색을 통한 게시글 갯수 조회 */
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception {
+		return dao.listSearchCount(cri);
 	}
 
 }

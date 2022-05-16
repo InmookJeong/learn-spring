@@ -18,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import kr.study.dev_mook.model.BoardVO;
 import kr.study.dev_mook.model.Criteria;
+import kr.study.dev_mook.model.SearchCriteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
@@ -113,6 +114,25 @@ public class BoardDAOTest {
 		
 		String expected = "/board/read?bno=12&perPageNum=20";
 		assertEquals(uriComponents.toString(), expected);
+	}
+	
+	@Test
+	@Description("Dynamic Query Test")
+	public void testDynamic1() throws Exception {
+		SearchCriteria cri = new SearchCriteria();
+		cri.setPage(1);
+		cri.setKeyword("글");
+		cri.setSearchType("t");
+		
+		logger.info("=====================================");
+		
+		List<BoardVO> list = dao.listSearch(cri);
+		for(BoardVO boardVO : list) {
+			logger.info(boardVO.getBno() + " : " + boardVO.getTitle());
+		}
+		
+		logger.info("=====================================");
+		logger.info("COUNT : " + dao.listSearchCount(cri));
 	}
 
 }

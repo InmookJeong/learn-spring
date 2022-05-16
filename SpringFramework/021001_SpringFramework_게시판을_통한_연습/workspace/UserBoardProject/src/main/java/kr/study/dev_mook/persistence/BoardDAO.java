@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.study.dev_mook.model.BoardVO;
 import kr.study.dev_mook.model.Criteria;
+import kr.study.dev_mook.model.SearchCriteria;
 
 public interface BoardDAO {
 	
@@ -25,5 +26,11 @@ public interface BoardDAO {
 	
 	/* 전체 게시글 갯수 가져오기 */
 	public int countPaging(Criteria cri) throws Exception;
+	
+	/* 검색을 통해 게시글 목록 조회 */
+	public List<BoardVO> listSearch(SearchCriteria cri) throws Exception;
+	
+	/* 검색을 통해 게시글 갯수 가져오기 */
+	public int listSearchCount(SearchCriteria cri) throws Exception;
 	
 }

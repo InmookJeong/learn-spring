@@ -95,6 +95,19 @@ public class PageMaker {
 		
 		return uriComponents.toString();
 	}
+	
+	/* 검색을 위한 searchType, keyword 추가 */
+	public String makeSearch(int page) {
+		UriComponents uriComponents = 
+				UriComponentsBuilder.newInstance()
+				.queryParam("page", page)
+				.queryParam("perPageNum", cri.getPerPageNum())
+				.queryParam("searchType", ((SearchCriteria)cri).getSearchType())
+				.queryParam("keyword", ((SearchCriteria)cri).getKeyword())
+				.build();
+		
+		return uriComponents.toString();
+	}
 
 	@Override
 	public String toString() {

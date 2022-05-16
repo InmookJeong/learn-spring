@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.study.dev_mook.model.BoardVO;
 import kr.study.dev_mook.model.Criteria;
+import kr.study.dev_mook.model.SearchCriteria;
 
 public interface BoardService {
 	
@@ -20,5 +21,9 @@ public interface BoardService {
 	public List<BoardVO> listCriteria(Criteria criteria) throws Exception;
 	
 	public int listCountCriteria(Criteria cri) throws Exception;
+	
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception;
+	
+	public int listSearchCount(SearchCriteria cri) throws Exception;
 
 }

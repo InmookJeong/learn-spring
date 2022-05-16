@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.study.dev_mook.model.BoardVO;
 import kr.study.dev_mook.model.Criteria;
+import kr.study.dev_mook.model.SearchCriteria;
 import kr.study.dev_mook.persistence.BoardDAO;
 
 @Repository
@@ -59,5 +60,15 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public int countPaging(Criteria cri) throws Exception {
 		return session.selectOne(NAMESPACE+".countPaging", cri);
+	}
+
+	@Override
+	public List<BoardVO> listSearch(SearchCriteria cri) throws Exception {
+		return session.selectList(NAMESPACE+".listSearch", cri);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception {
+		return session.selectOne(NAMESPACE+".listSearchCount", cri);
 	}
 }
