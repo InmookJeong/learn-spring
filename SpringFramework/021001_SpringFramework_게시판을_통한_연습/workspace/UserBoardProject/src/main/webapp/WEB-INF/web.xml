@@ -58,7 +58,7 @@
 	
 	<filter>
 		<filter-name>hiddenHttpMethodFilter</filter-name>
-		<filter-class>org.springframework.web.filter.HiddenHttpMethodFileter</filter-class>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
 	</filter>
 	
 	<!-- HiddenHttpMethodFilter 제공을 위한 Filter 추가 -->
