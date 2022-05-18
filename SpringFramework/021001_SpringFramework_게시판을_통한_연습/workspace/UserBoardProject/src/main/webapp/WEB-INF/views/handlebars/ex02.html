@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- Handlebars를 이용하기 위한 JS 추가 -->
+	<!-- Handlebars : Mustache 기반 템플릿 작성 플러그인 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+	
+	<div id="displayDiv">
+	</div>
+	
+	<!-- Script로 Template 생성 -->
+	<script id="template" type="text/x-handlebars-template">
+		{{#each .}}
+			<li class="reply-li">
+				<div>{{rno}}</div>
+				<div>{{replytext}}</div>
+				<div>{{replydate}}</div>
+			</li>
+		{{/each}}
+	</script>
+	
+	<script>
+		const source = $('#template').html();
+		const template = Handlebars.compile(source);
+		const data = [
+			{rno:1, replytext:'1번 댓글...', replydate:new Date()},
+			{rno:2, replytext:'2번 댓글...', replydate:new Date()},
+			{rno:3, replytext:'3번 댓글...', replydate:new Date()},
+			{rno:4, replytext:'4번 댓글...', replydate:new Date()},
+			{rno:5, replytext:'5번 댓글...', replydate:new Date()},
+			{rno:6, replytext:'6번 댓글...', replydate:new Date()},
+			{rno:7, replytext:'7번 댓글...', replydate:new Date()},
+		];
+		$('#displayDiv').html(template(data));
+	</script>
+	
+</body>
+</html>

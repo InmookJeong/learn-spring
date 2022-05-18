@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- Handlebars를 이용하기 위한 JS 추가 -->
+	<!-- Handlebars : Mustache 기반 템플릿 작성 플러그인 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+	
+	<div id="displayDiv">
+	</div>
+	
+	<!-- Script로 Template 생성 -->
+	<script id="template" type="text/x-handlebars-template">
+		<span>{{name}}</span>
+		<div>
+			<span> {{userid}}</span>
+			<span> {{addr}}</span>
+		</div>
+	</script>
+	
+	<script>
+		const source = $('#template').html();
+		const template = Handlebars.compile(source);
+		const data = {name:'홍길동', userid:'user00', addr:'조선 한양'};
+		$('#displayDiv').html(template(data));
+	</script>
+	
+</body>
+</html>
