@@ -167,7 +167,34 @@
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 			<version>1.16</version>
 		</dependency>
-	
+		
+		<!-- Transaction 처리를 위한 Dependency 추가 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- AOP 처리를 위한 Dependency 추가 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- AOP 기능 적용을 위해 AspectJ 문법 사용 -->
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.5.4</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.5.4</version>
+		</dependency>
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
