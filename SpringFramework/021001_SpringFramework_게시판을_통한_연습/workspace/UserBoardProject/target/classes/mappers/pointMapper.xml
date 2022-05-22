@@ -11,7 +11,7 @@
 		SET
 			upoint = upoint + #{point}
 		WHERE
-			uid = ${uid}
+			uid = #{uid}
 	</update>
 	
 </mapper>

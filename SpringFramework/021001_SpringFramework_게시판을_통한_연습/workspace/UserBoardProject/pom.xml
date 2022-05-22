@@ -35,11 +35,12 @@
 		</dependency>
 				
 		<!-- AspectJ -->
-		<dependency>
+		<!-- 다른 버전을 사용하여 연습 -->
+		<!-- <dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>	
+		</dependency> -->
 		
 		<!-- Logging -->
 		<dependency>
