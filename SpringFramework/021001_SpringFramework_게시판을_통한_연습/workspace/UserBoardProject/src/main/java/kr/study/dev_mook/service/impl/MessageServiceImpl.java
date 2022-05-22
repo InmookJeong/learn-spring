@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.study.dev_mook.model.MessageVO;
 import kr.study.dev_mook.persistence.MessageDAO;
@@ -22,6 +23,7 @@ public class MessageServiceImpl implements MessageService {
 	@Inject
 	private PointDAO pointDao;
 	
+	@Transactional
 	@Override
 	public void addMessage(MessageVO vo) throws Exception {
 		messageDao.create(vo);

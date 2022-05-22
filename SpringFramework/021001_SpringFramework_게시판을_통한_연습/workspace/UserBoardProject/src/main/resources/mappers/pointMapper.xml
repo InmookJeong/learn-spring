@@ -5,13 +5,14 @@
 
 <mapper namespace="kr.study.dev_mook.mapper.PointMapper">
 	
+	<!-- Transaction Test를 위해 uuuid로 변경 -->
 	<update id="updatePoint">
 		UPDATE
 			tbl_user
 		SET
 			upoint = upoint + #{point}
 		WHERE
-			uid = #{uid}
+			uuuid = #{uid}
 	</update>
 	
 </mapper>
