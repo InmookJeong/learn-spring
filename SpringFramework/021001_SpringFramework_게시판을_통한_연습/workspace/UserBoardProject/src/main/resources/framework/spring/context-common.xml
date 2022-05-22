@@ -9,5 +9,7 @@
 		<context:component-scan base-package="kr.study.dev_mook.persistence" />
 		<!-- @Service의 Bean 등록을 위한 Component Scan -->
 		<context:component-scan base-package="kr.study.dev_mook.service" />
+		<!-- AOP 설정을 위한 Component scan -->
+		<context:component-scan base-package="kr.study.dev_mook.aop"></context:component-scan>
 		
 </beans>

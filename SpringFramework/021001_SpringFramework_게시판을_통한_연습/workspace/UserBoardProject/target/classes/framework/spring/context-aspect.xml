@@ -10,4 +10,8 @@
 		<!-- AOP 설정을 통한 Proxy 객체 자동 생성 -->
 		<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 		
+		<!-- 추후 XML 방식으로 AOP 기능 설정 시 사용 -->
+		<aop:config>
+		</aop:config>
+		
 </beans>
