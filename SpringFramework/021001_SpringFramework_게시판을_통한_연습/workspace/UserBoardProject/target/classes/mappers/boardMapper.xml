@@ -15,7 +15,7 @@
 	
 	<select id="read" parameterType="int" resultType="kr.study.dev_mook.model.BoardVO">
 		SELECT
-			bno, title, content, writer, regdate, viewcnt
+			bno, title, content, writer, regdate, viewcnt, replycnt
 		FROM
 			tbl_board
 		WHERE

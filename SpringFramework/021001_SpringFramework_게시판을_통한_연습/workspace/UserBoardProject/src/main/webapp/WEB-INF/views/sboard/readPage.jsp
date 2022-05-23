@@ -64,7 +64,7 @@
 </div>
 
 <ul class="timeline">
-	<li class="time-label" id="repliesDiv">
+	<li class="time-label" id="repliesDiv" data-vo="${boardVO}">
 		<span class="bg-green">
 			Replies List <small id="replycntSmall">[ ${boardVO.replycnt} ]</small>
 		</span>
