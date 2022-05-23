@@ -71,7 +71,7 @@
 	<select id="listCriteria" resultType="BoardVO">
 		<![CDATA[
 			SELECT
-				bno, title, content, writer, regdate, viewcnt
+				bno, title, content, writer, regdate, viewcnt, replycnt
 			FROM
 				tbl_board
 			WHERE
@@ -130,6 +130,24 @@
 		<!-- Where 조건만 별도 쿼리로 작성한 후 가져다 쓰기 -->
 		<include refid="searchWhere"></include>
 	</select>
+	
+	<update id="updateReplyCnt">
+		UPDATE
+			tbl_board
+		SET
+			replycnt = replycnt + #{amount}
+		WHERE
+			bno = #{bno}
+	</update>
+	
+	<update id="updateViewCnt">
+		UPDATE
+			tbl_board
+		SET
+			viewcnt = viewcnt + 1
+		WHERE
+			bno = #{bno}
+	</update>
 	
 	<!-- Where 조건만 별도 쿼리로 작성 -->
 	<sql id="searchWhere">

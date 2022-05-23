@@ -1,6 +1,8 @@
 package kr.study.dev_mook.persistence.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -70,5 +72,19 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public int listSearchCount(SearchCriteria cri) throws Exception {
 		return session.selectOne(NAMESPACE+".listSearchCount", cri);
+	}
+
+	@Override
+	public void updateReplyCnt(Integer bno, int amount) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("bno", bno);
+		paramMap.put("amount", amount);
+		
+		session.update(NAMESPACE+".updateReplyCnt", paramMap);
+	}
+
+	@Override
+	public void updateViewCnt(Integer bno) throws Exception {
+		session.update(NAMESPACE+".updateViewCnt", bno);
 	}
 }

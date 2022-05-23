@@ -54,7 +54,7 @@
 			<td>${boardVO.bno}</td>
 			<td>
 				<a href="/sboard/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${boardVO.bno}">
-					${boardVO.title}
+					${boardVO.title} <strong>[ ${boardVO.replycnt} ]</strong>
 				</a>
 			</td>
 			<td>${boardVO.writer}</td>

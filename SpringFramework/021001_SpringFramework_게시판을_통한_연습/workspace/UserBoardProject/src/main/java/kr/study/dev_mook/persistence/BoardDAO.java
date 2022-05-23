@@ -33,4 +33,9 @@ public interface BoardDAO {
 	/* 검색을 통해 게시글 갯수 가져오기 */
 	public int listSearchCount(SearchCriteria cri) throws Exception;
 	
+	/* 댓글 숫자 변경 처리 */
+	public void updateReplyCnt(Integer bno, int amount) throws Exception;
+	
+	public void updateViewCnt(Integer bno) throws Exception;
+	
 }

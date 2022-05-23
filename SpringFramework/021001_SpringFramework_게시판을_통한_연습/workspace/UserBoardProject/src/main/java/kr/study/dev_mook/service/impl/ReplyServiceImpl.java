@@ -5,9 +5,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.study.dev_mook.model.Criteria;
 import kr.study.dev_mook.model.ReplyVO;
+import kr.study.dev_mook.persistence.BoardDAO;
 import kr.study.dev_mook.persistence.ReplyDAO;
 import kr.study.dev_mook.service.ReplyService;
 
@@ -16,36 +18,44 @@ import kr.study.dev_mook.service.ReplyService;
 public class ReplyServiceImpl implements ReplyService {
 
 	@Inject
-	private ReplyDAO dao;
+	private ReplyDAO replyDao;
 	
+	@Inject
+	private BoardDAO boardDao;
+	
+	@Transactional
 	@Override
 	public void addReply(ReplyVO vo) throws Exception {
-		dao.create(vo);
+		replyDao.create(vo);
+		boardDao.updateReplyCnt(vo.getBno(), 1);
 	}
 
 	@Override
 	public List<ReplyVO> listReply(Integer bno) throws Exception {
-		return dao.list(bno);
+		return replyDao.list(bno);
 	}
 
 	@Override
 	public void modifyReply(ReplyVO vo) throws Exception {
-		dao.update(vo);
+		replyDao.update(vo);
 	}
 
+	@Transactional
 	@Override
 	public void removeReply(Integer rno) throws Exception {
-		dao.delete(rno);
+		int bno = replyDao.getBno(rno);
+		replyDao.delete(rno);
+		boardDao.updateReplyCnt(bno, -1);
 	}
 
 	@Override
 	public List<ReplyVO> listReplyPage(Integer bno, Criteria cri) throws Exception {
-		return dao.listPage(bno, cri);
+		return replyDao.listPage(bno, cri);
 	}
 
 	@Override
 	public int count(Integer bno) throws Exception {
-		return dao.count(bno);
+		return replyDao.count(bno);
 	}
 
 }

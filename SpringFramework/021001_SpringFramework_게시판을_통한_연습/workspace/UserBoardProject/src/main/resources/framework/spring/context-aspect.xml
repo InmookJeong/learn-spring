@@ -7,10 +7,14 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 		
+		<!-- AOP 설정을 위한 Component scan -->
+		<context:component-scan base-package="kr.study.dev_mook.aop" />
+		
 		<!-- AOP 설정을 통한 Proxy 객체 자동 생성 -->
 		<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 		
 		<!-- 추후 XML 방식으로 AOP 기능 설정 시 사용 -->
-		<aop:config></aop:config>
+		<aop:config>
+		</aop:config>
 		
 </beans>
