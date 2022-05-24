@@ -87,4 +87,14 @@ public class BoardDAOImpl implements BoardDAO {
 	public void updateViewCnt(Integer bno) throws Exception {
 		session.update(NAMESPACE+".updateViewCnt", bno);
 	}
+
+	@Override
+	public void addAttach(String fullName) throws Exception {
+		session.insert(NAMESPACE+".addAttacth", fullName);
+	}
+
+	@Override
+	public List<String> getAttach(Integer bno) throws Exception {
+		return session.selectList(NAMESPACE+".getAttach", bno);
+	}
 }

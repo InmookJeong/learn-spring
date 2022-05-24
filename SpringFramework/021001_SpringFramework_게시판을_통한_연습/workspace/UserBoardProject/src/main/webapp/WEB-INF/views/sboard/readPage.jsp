@@ -102,6 +102,40 @@
 	</div>
 </div>
 
+<style>
+	.popup {
+		position: absolute;
+	}
+	
+	.back {
+		background-color: gray;
+		opacity: 0.5;
+		width: 100%;
+		height: 300%;
+		overflow: hidden;
+		z-index: 1101;
+	}
+	
+	.front {
+		z-index: 1110;
+		opacity: 1;
+		border: 1px;
+		margin: auto;
+	}
+	
+	.show {
+		position: relative;
+		max-width: 1200px;
+		max-height: 800px;
+		overflow: auto;
+	}
+</style>
+
+<div class="popup back" style="display: none;"></div>
+<div id="popupFront" class="popup front" style="display: none;">
+	<img id="popupImg" />
+</div>
+
 <%@ include file="../include/footer.jsp" %>
 
 <script id="template" type="text/x-handlebars-template">
@@ -128,11 +162,24 @@
 	{{/each}}
 </script>
 
+<script id="templateAttach" type="text/x-handlebars-template">
+	<li data-src="{{fullName}}">
+		<span class="mailbox-attachment-icon has-img">
+			<img src="{{imgsrc}}" alt="Attachment" />
+		</span>
+		<div class="mailbox-attachment-info">
+			<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
+		</div>
+	</li>
+</script>
+
 <script>
 	$(document).ready(function() {
 		
 		const bno = ${boardVO.bno},
 			  replyPage = 1;
+		
+		const template = Handlebars.compile($('#templateAttach').html());
 		
 		function getPage(pageInfo) {
 			$.getJSON(pageInfo, function(data) {
@@ -313,4 +360,30 @@
 		});
 		
 	});
+	
+	$.getJSON('/sboard/getAttach/' + bno, function(list) {
+		$(list).each(function() {
+			const fileInfo = getFileInfo(this);
+			const html = template(fileInfo);
+			$('.uploaded-list').append(thml);
+		});
+	});
+	
+	$('.uploaded-list').on('click', 'mailbox-attachment-info a', function(event) {
+		const fileLink = $(this).attr('href');
+		
+		if(checkImageType(fileLink)) {
+			event.preventDefault();
+			let imgTag = $('#popupImg');
+			imgTag.attr('src', fileLink);
+			console.log(imgTag.attr('src'));
+			
+			$('.popup').show('slow');
+			imgTag.addClass('show');
+		}
+	});
+	
+	$('#popupImg').on('click', function() {
+		$('.popup').hide('slow');
+	})
 </script>

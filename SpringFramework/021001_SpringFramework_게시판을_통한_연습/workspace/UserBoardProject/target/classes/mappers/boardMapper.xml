@@ -149,6 +149,21 @@
 			bno = #{bno}
 	</update>
 	
+	<insert id="addAttach">
+		INSERT INTO tbl_attach(fullName, bno) values(#{fullName}, LAST_INSERT_ID())
+	</insert>
+	
+	<select id="getAttach" resultType="string">
+		SELECT
+			fullName
+		FROM
+			tbl_attach
+		WHERE
+			bno = #{bno}
+		ORDER BY
+			regdate
+	</select>
+	
 	<!-- Where 조건만 별도 쿼리로 작성 -->
 	<sql id="searchWhere">
 		<if test="searchType != null">
