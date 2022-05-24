@@ -49,10 +49,63 @@
 			contentType: false,
 			type: 'POST',
 			success: function(data) {
-				alert(data);
+				
+				let str = "";
+				if(checkImageType(data)) {
+					str += "<div>";
+					str += "<a href='displayFile?fileName="+getImageLink(data)+"'>";
+					str += "<img src='displayFile?fileName="+data+"' />";
+					str += "</a>";
+					str += "<small data-src="+data+">";
+					// str += data;
+					str += "X";
+					str += "</samll>";
+					str += "</div>";
+				} else {
+					str += "<div><a href='displayFile?fileName="+data+"'>";
+					str += getOriginalName(data);
+					str += "</a>";
+					str += "<small data-src="+data+">";
+					str += " X";
+					str += "</samll>";
+					str += "</div>";
+				}
+				
+				$('.uploaded-list').append(str);
 			}, error: function(){
 				alert('error...')
 			}
 		});
 	});
+	
+	$('.uploaded-list').on('click', 'small', function(event) {
+		const that = $(this);
+		$.ajax({
+			url: '/upload/deleteFile',
+			type: 'post',
+			data: {fileName:$(this).data('src')},
+			dataType: 'text',
+			success: function(result) {
+				if(result == 'deleted') that.parent('div').remove();
+			}
+		});
+	});
+	
+	function checkImageType(fileName) {
+		const pattern = /jpg|gif|png|jpeg/i;
+		return fileName.match(pattern);
+	}
+	
+	function getOriginalName(fileName) {
+		if(checkImageType(fileName)) return;
+		const idx = fileName.indexOf('_')+1;
+		return fileName.substr(idx);
+	}
+	
+	function getImageLink(fileName) {
+		if(!checkImageType(fileName)) return;
+		const front = fileName.substr(0,12);
+		const end = fileName.substr(14);
+		return front + end;
+	}
 </script>

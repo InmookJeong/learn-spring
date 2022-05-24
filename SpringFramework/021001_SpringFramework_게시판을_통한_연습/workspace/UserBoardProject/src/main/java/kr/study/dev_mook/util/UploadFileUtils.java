@@ -58,7 +58,7 @@ public class UploadFileUtils {
 		String thumbnailName = uploadPath + path + File.separator + "s_" + fileName;
 		
 		File newFile = new File(thumbnailName);
-		String formatName = fileName.substring(fileName.lastIndexOf(".")-1);
+		String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
 		
 		ImageIO.write(destImg, formatName.toUpperCase(), newFile);
 		return thumbnailName.substring(uploadPath.length()).replace(File.separatorChar, '/');
