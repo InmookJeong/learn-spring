@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.study.dev_mook.persistence.PointDAO;
 
@@ -22,6 +23,7 @@ public class PointDAOImpl implements PointDAO {
 	
 	private final String NAMESPACE = "kr.study.dev_mook.mapper.PointMapper";
 
+	@Transactional
 	@Override
 	public void updatePoint(String uid, int point) throws Exception {
 		Map<String, Object> paramMap = new HashMap<String, Object>();

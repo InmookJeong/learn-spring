@@ -2,6 +2,7 @@ package kr.study.dev_mook.aop;
 
 import java.util.Arrays;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -24,7 +25,7 @@ public class SampleAdvice {
 	 *   - kr.study.dev_mook.service.MessageService로 시작하는 모든 클래스의 모든 메소드가 동작하기 전에 해당 AOP 메소드 실행
 	 */
 	@Before("execution(* kr.study.dev_mook.service..MessageService*.*(..))")
-	public void startLog() {
+	public void startLog(JoinPoint jp) {
 		System.out.println("########## HERE.....");
 		logger.info("-------------------------");
 		logger.info("##### Call Before Advice");

@@ -174,10 +174,10 @@
 </script>
 
 <script>
+	const bno = ${boardVO.bno},
+		  replyPage = 1;
+	
 	$(document).ready(function() {
-		
-		const bno = ${boardVO.bno},
-			  replyPage = 1;
 		
 		const template = Handlebars.compile($('#templateAttach').html());
 		
@@ -361,7 +361,7 @@
 		
 	});
 	
-	$.getJSON('/sboard/getAttach/' + bno, function(list) {
+	$.getJSON('/sboard/getAttach/'+bno, function(list) {
 		$(list).each(function() {
 			const fileInfo = getFileInfo(this);
 			const html = template(fileInfo);
@@ -385,5 +385,27 @@
 	
 	$('#popupImg').on('click', function() {
 		$('.popup').hide('slow');
-	})
+	});
+	
+	$('#removeBtn').on('click', function() {
+		const replyCnt = $('#replycntSmall').html();
+		if(replyCnt > 0) {
+			alert('댓글이 달린 게시물을 삭제할 수 없습니다.');
+			return;
+		}
+		
+		let arr = [];
+		$('.uploaded-list li').each(function(index) {
+			arr.push($(this).data('src'));
+		});
+		
+		if(arr.length > 0) {
+			$.post('/upload/deleteAllFiles', {files:arr}, function() {
+				
+			});
+		};
+		
+		formObj.aattr('action', '/sboard/removePage');
+		formObj.submit();
+	});
 </script>
