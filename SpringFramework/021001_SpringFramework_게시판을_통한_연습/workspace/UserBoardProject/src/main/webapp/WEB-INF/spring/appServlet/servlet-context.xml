@@ -34,4 +34,16 @@
 		<beans:constructor-arg value="C:\\zzz\\upload" />
 	</beans:bean>
 	
+	<!-- Interceptor -->
+	<beans:bean id="sampleInterceptor" class="kr.study.dev_mook.interceptor.SampleInterceptor">
+	</beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/doA"/>
+			<mapping path="/doB"/>
+			<beans:ref bean="sampleInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
