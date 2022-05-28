@@ -23,20 +23,16 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		ModelMap modelMap = modelAndView.getModelMap();
 		Object userVO = modelMap.get("userVO");
 		
-		String redirect = "/";
 		if(userVO != null) {
 			logger.info("New Login Success");
 			// 로그인한 사용자에 대한 정보를 HttpSession에 저장
 			session.setAttribute(LOGIN, userVO);
-			response.sendRedirect("/");
+//			response.sendRedirect("/");
 			
 			// 로그인 처리 후 원래 접속하려던 URI로 이동
 			Object dest = session.getAttribute("dest");
-			if(dest != null) redirect = (String) dest;
+			response.sendRedirect((dest != null) ? (String) dest:"/");
 		}
-		
-		// 왜 안되지?
-		response.sendRedirect(redirect);
 	}
 	
 	@Override

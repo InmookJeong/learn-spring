@@ -35,8 +35,10 @@
 </div>
 
 <div id="boardBtnGroup" class="box-footer">
-	<button type="submit" class="btn btn-warning">MODIFY</button>
-	<button type="submit" class="btn btn-danger">REMOVE</button>
+	<c:if test="${login.ui == boardVO.writer}">
+		<button type="submit" class="btn btn-warning">MODIFY</button>
+		<button type="submit" class="btn btn-danger">REMOVE</button>
+	</c:if>
 	<button type="submit" class="btn btn-primary">LIST</button>
 </div>
 
@@ -49,17 +51,27 @@
 			</div>
 		</div>
 		
-		<div class="box-body">
-			<label for="exampleInputEmail1">Writer</label>
-			<input class="form-control" type="text" placeholder="USER ID" id="newReplyWriter" />
+		<c:if test="${not empty login}">
+			<div class="box-body">
+				<label for="exampleInputEmail1">Writer</label>
+				<input class="form-control" type="text" placeholder="USER ID" id="newReplyWriter" />
+				
+				<label for="exampleInputEmail1">Reply Text</label>
+				<input class="form-control" type="text" placeholder="REPLY TEXT" id="newReplyText" />
+			</div>
 			
-			<label for="exampleInputEmail1">Reply Text</label>
-			<input class="form-control" type="text" placeholder="REPLY TEXT" id="newReplyText" />
-		</div>
+			<div class="box-footer">
+				<button type="submit" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button>
+			</div>
+		</c:if>
 		
-		<div class="box-footer">
-			<button type="submit" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button>
-		</div>
+		<c:if test="${empty login}">
+			<div class="box-body">
+				<div>
+					<a href="javascript:goLogin();">Login Please</a>
+				</div>
+			</div>
+		</c:if>
 	</div>
 </div>
 
@@ -153,9 +165,11 @@
 				<div class="timeline-body">{{replytext}}</div>
 				
 				<div class="timeline-footer">
-					<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">
-						Modify
-					</a>
+					{{#eqReplyer replyer}}
+						<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">
+							Modify
+						</a>
+					{{/eqReplyer}}
 				</div>
 			</div
 		</li>
@@ -211,6 +225,14 @@
 				  month = dateObj.getMonth() + 1,
 				  date = dateObj.getDate();
 			return year+"/"+month+"/"+date;
+		});
+		
+		/* Handlerbars 기능 확장을 위한 eqReply */
+		/* 로그인한 사용자가 작성한 댓글만 수정 가능 */
+		Handlebars.registerhelper('eqReplyer', function(replyer, block) {
+			let accum = '';
+			if(replyer == '${login.uid}') accum += block.fn();
+			return accum;
 		});
 		
 		/* Handlebars Template 구현 */
