@@ -42,6 +42,10 @@
 	<beans:bean id="loginInterceptor" class="kr.study.dev_mook.interceptor.LoginInterceptor">
 	</beans:bean>
 	
+	<!-- Auth Interceptor -->
+	<beans:bean id="authInterceptor" class="kr.study.dev_mook.interceptor.AuthInterceptor">
+	</beans:bean>
+	
 	<interceptors>
 		<interceptor>
 			<mapping path="/doA"/>
@@ -52,6 +56,11 @@
 		<interceptor>
 			<mapping path="/user/loginPost"/>
 			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/sboard/register"/>
+			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 	</interceptors>
 	
