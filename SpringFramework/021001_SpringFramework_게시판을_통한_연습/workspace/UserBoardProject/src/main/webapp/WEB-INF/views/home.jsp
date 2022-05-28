@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<!-- HttpSession 사용을 위해 주석처리 -->
+<%-- <%@ page session="false" %> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ include file="include/header.jsp" %>
@@ -12,6 +13,9 @@
 				<div class="box">
 					<div class="box-header">
 						<h3 class="box-title">HOME PAGE</h3>
+					</div>
+					<div>
+						result : ${result}
 					</div>
 				</div>
 			</div>
