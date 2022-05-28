@@ -34,8 +34,12 @@
 		<beans:constructor-arg value="C:\\zzz\\upload" />
 	</beans:bean>
 	
-	<!-- Interceptor -->
+	<!-- Sample Interceptor -->
 	<beans:bean id="sampleInterceptor" class="kr.study.dev_mook.interceptor.SampleInterceptor">
+	</beans:bean>
+	
+	<!-- Login Interceptor -->
+	<beans:bean id="loginInterceptor" class="kr.study.dev_mook.interceptor.LoginInterceptor">
 	</beans:bean>
 	
 	<interceptors>
@@ -43,6 +47,11 @@
 			<mapping path="/doA"/>
 			<mapping path="/doB"/>
 			<beans:ref bean="sampleInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/user/loginPost"/>
+			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 	</interceptors>
 	
