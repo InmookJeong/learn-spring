@@ -15,4 +15,23 @@
 			AND upw = #{upw}
 	</select>
 	
+	<update id="keepLogin">
+		UPDATE
+			tbl_user
+		SET
+			sessionkey = #{sessionId},
+			sessionlimit = #{next}
+		WHERE
+			uid = #{uid}
+	</update>
+	
+	<select id="checkUserWithSessionKey" resultType="UserVO">
+		SELECT
+			*
+		FROM
+			tbl_user
+		WHERE
+			sessionKey = #{value}
+	</select>
+	
 </mapper>

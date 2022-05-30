@@ -23,3 +23,8 @@ alter table tbl_message add constraint fk_usersender
 foreign key (targetid) references tbl_user(uid);
 
 commit;
+
+-- 자동로그인 구현을 위한 테이블 변경
+alter table tbl_user add column sessionkey varchar(50) not null default 'none';
+
+alter table tbl_user add column sessionlimit timestamp;
