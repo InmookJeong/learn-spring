@@ -9,10 +9,10 @@
 		
 		<!-- 나중에 이곳 활용하기 -->
 		<!-- Transaction 처리를 위한 bean 등록 -->
-		<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 			<property name="dataSource" ref="dataSource" />
-		</bean> -->
+		</bean>
 		
-		<!-- @@Transactional 사용하기 위한 context -->
-		<!-- <tx:annotation-driven/> -->
+		<!-- @Transactional 사용하기 위한 context -->
+		<tx:annotation-driven/>
 </beans>
